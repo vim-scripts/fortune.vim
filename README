@@ -1,0 +1,10 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=10
+
+This macro will add a signature (from
+~/.fortunes) to the end of a file.
+(preferably an e-mail) This script
+was copied from a macro from:
+http://www.moolenaar.net which was
+made by Bram Moolenaar.  I changed it
+so it would stick on the sig then
+quit.
