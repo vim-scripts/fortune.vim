@@ -1,10 +1,28 @@
-" ZZ..................Add a fortune and advance to the next one then quit editor
-" :sp ~/.fortunes<CR>.open a window on ~/.fortunes
-" d/^--/<CR>..........delete until the next line starting with "--"
-" Gp..................Go to the end and put the just deleted text there
-" :wq<CR>.............Write the ~/.fortunes file and close the window
-" GA<CR><Esc>.........go to the end Add an empty line
-" p...................put the fortune text
-" :x<CR>..............quit the editor
+map  
+map!  
+set nocp tw=72 noet
+syn on
 
-map ZZ :sp ~/.fortunes<CR>d/^--/<CR>Gp:wq<CR>GA<CR><Esc>p:x<CR>
+" ~~ 
+"      Man on cross [singing]: ``Always look on the bright side of
+"                              life...'' [whistling]...
+"                -- Monty Python::The life of Brian(``Erik Idle'')
+" 
+"     /||  Adam Seyfarth <http://members.home.net/adam.seyfarth/>  ||\
+"    /«||  <mailto:cloud@users.sf.net>   <http://www.majik3d.org>  ||»\
+"    \«||  <http://tuxaqfh.sf.net>        <http://tuxkart.sf.net>  ||»/
+"     \||  <http://vim.sf.net>           <http://www.majik3d.org>  ||/
+
+map <Leader>s :call AddSig()<CR>
+func! AddSig()
+     sp ~/.fortunes
+     normal d/^-- $/
+     exe 'norm Gp'
+     wq
+     exe 'norm Gop'
+     exe 'norm Go'
+     r ~/.sig
+endfunc
+
+map <Leader>r G?^-- $?2kdG:call AddSig()<CR>
+autocmd FileType mail norm ggO
